@@ -13,9 +13,9 @@ module.exports.routes = [
       if not stderr and not error
         pastee.paste stdout + stderr, (data) ->
           if data?
-            res.send "[trace] #{data.paste.link}"
+            res.send "[trace] #{res.nick}, #{data.paste.link}"
           else
-            res.send "[trace] Look's like we're having problems with our api provider"
+            res.send "[trace] #{res.nick}, Look's like we're having problems with our api provider"
       else
-        res.send "[trace] I've failed to lookup #{host}"
+        res.send "[trace] #{res.nick}, I've failed to lookup #{host}"
 ]

@@ -1,6 +1,7 @@
 # wookie
 
 Yet another IRC bot.
+.wa .geo. .avail .t .w .trace .ping bot
 
 ## License
 

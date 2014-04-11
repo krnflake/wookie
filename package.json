@@ -1,6 +1,6 @@
 {
   "name": "wookie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -8,8 +8,10 @@
   "dependencies": {
     "coffee-script": "~1.7.1",
     "bluebird": "~1.2.1",
+    "underscore": "~1.6.0",
     "domo-kun": "~0.2.0",
     "request": "~2.34.0",
-    "node-whois": "~0.3.4"
+    "node-whois": "~0.3.4",
+    "wolfram": "~0.3.0"
   }
 }

@@ -12,9 +12,9 @@ module.exports.routes = [
       if not err
         pastee.paste data, (data) ->
           if data?
-            res.send "[whois] #{data.paste.link}"
+            res.send "[whois] #{res.nick}, #{data.paste.link}"
           else
-            res.send "[whois] Look's like we're having problems with our api provider"
+            res.send "[whois] #{res.nick}, Look's like we're having problems with our api provider"
       else
-        res.send "[whois] I've failed to lookup #{host}"
+        res.send "[whois] #{res.nick}, I've failed to lookup #{host}"
 ]

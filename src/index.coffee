@@ -1,15 +1,10 @@
 domo = require("domo-kun")
 fs = require("fs")
 path = require("path")
+config = require("./config")
 
 modulesPath = path.join(__dirname, "/modules")
 modules = []
-
-users = []
-
-config = JSON.parse(fs.readFileSync(path.join("__dirname", "../config.json"), 'utf8'))
-config.users.forEach (user) ->
-  users.push user
 
 fs.readdir modulesPath, (err, files) ->
   files.forEach (file) ->
@@ -22,7 +17,7 @@ fs.readdir modulesPath, (err, files) ->
     address: "irc.freenode.org"
     modules: modules
     channels: ["#domo-kun"]
-    users: users
+    users: config.users
     debug: if process.env.NODE_ENV == "production" then false else true
   )
 

@@ -1,4 +1,5 @@
 mw = require("../middlewares")
+_ = require("underscore")
 request = require("request")
 
 apiUrl = "https://freegeoip.net/json/"
@@ -12,10 +13,10 @@ module.exports.routes = [
     request apiUrl + host, (err, response, body) ->
       if not err
         data = JSON.parse(body)
-        if data?
-          res.send "[geo] #{data.ip} -> #{data.country_name} / #{data.region_name} / #{data.city} (#{data.zipcode})"
+        if data? and response.statusCode is 200
+          res.send "[geo] #{res.nick}, #{host} resolves to #{data.ip} (#{_.rest(_.values(data)).join(", ")})"
         else
-          res.send "[geo] Look's like we're having problems with our api provider"
+          res.send "[geo] #{res.nick}, Look's like we're having problems with our api provider"
       else
-        res.send "[geo] I've failed to lookup #{host}"
+        res.send "[geo] #{res.nick}, I've failed to lookup #{host}"
 ]
