@@ -9,9 +9,10 @@ exports.floodProtection = (res, next) ->
 
   unless hashList[key]
     hashList[key] = stamp
-    next()
+    return next()
 
   if (stamp - hashList[key]) <= timeout * 1000
+    @say res.nick, "Don't flood me with querys!"
     return
   else
     hashList[key] = stamp
@@ -20,7 +21,7 @@ exports.floodProtection = (res, next) ->
     delete hashList[key]
   ), (timeout * 1000)
 
-  next()
+  return next()
 
 hashKey = (res) ->
   new crypto.Hash("md5").update(res.prefix).digest "hex"
