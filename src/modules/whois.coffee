@@ -1,16 +1,20 @@
 mw = require("../middlewares")
-whois = require("node-whois")
+helpers = require("../helpers")
+exec = require('child_process').exec
+path = require('path')
 pastee = require("../pastee")
+
+script = path.join(__dirname, "../vendor/python-whois/pwhois")
 
 module.exports.routes = [
   path: "%whois *"
   middlewares: [mw.floodProtection]
   handler: (res) ->
-    host = res.splats[0]
+    host = helpers.escapeshell res.splats[0]
 
-    whois.lookup host, (err, data) ->
-      if not err
-        pastee.paste data, (data) ->
+    exec "#{script} #{host}", (error, stdout, stderr) ->
+      if not stderr and not error
+        pastee.paste stdout + stderr, (data) ->
           if data?
             res.send "[whois] #{res.nick}, #{data.paste.link}"
           else

@@ -4,7 +4,7 @@ exec = require('child_process').exec
 url = require("url")
 path = require("path")
 
-script = path.join(__dirname, "../../heartbleed/heartbleed_modified.py")
+script = path.join(__dirname, "../vendor/ssltest-stls/ssltest-stls.py")
 
 module.exports.routes = [
   path: "%heartbleed *"
