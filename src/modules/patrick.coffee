@@ -1,5 +1,3 @@
-mw = require("../middlewares")
-
 images = [
           "http://i.imgur.com/cpcbUkH.gif",
           "http://i.imgur.com/LExJFpP.gif",
@@ -11,7 +9,6 @@ images = [
 
 module.exports.routes = [
   path: "%patrick"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     res.send "[patrick] #{images[Math.floor(Math.random() * images.length)]}"
 ]

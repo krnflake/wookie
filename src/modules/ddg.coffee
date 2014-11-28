@@ -1,4 +1,3 @@
-mw = require("../middlewares")
 request = require("request")
 config = require("../config")
 
@@ -6,7 +5,6 @@ apiUrl = "https://duckduckgo-duckduckgo-zero-click-info.p.mashape.com/?no_html=1
 
 module.exports.routes = [
   path: "%ddg *"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     queue = res.splats[0]
 

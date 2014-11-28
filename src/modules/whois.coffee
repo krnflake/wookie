@@ -1,4 +1,3 @@
-mw = require("../middlewares")
 helpers = require("../helpers")
 exec = require('child_process').exec
 path = require('path')
@@ -8,7 +7,6 @@ script = path.join(__dirname, "../vendor/python-whois/pwhois")
 
 module.exports.routes = [
   path: "%whois *"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     host = helpers.escapeshell res.splats[0]
 

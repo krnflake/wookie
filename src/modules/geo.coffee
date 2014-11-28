@@ -1,4 +1,3 @@
-mw = require("../middlewares")
 _ = require("underscore")
 request = require("request")
 
@@ -6,7 +5,6 @@ apiUrl = "https://freegeoip.net/json/"
 
 module.exports.routes = [
   path: "%geo *"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     host = res.splats[0]
 

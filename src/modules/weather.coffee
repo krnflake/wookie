@@ -1,11 +1,9 @@
-mw = require("../middlewares")
 request = require("request")
 
 apiUrl = "http://api.openweathermap.org/data/2.5/weather?q="
 
 module.exports.routes = [
   path: "%weather *"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     loc = res.splats[0]
 

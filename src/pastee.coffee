@@ -1,6 +1,6 @@
 request = require("request")
 
-apiUrl = "http://paste.ee/api"
+apiUrl = "https://paste.ee/api"
 
 exports.paste = (data, cb) ->
   request.post apiUrl,

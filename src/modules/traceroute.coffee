@@ -1,11 +1,9 @@
-mw = require("../middlewares")
 helpers = require("../helpers")
 exec = require('child_process').exec
 pastee = require("../pastee")
 
 module.exports.routes = [
   path: "%trace *"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     host = helpers.escapeshell res.splats[0]
 

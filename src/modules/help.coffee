@@ -1,8 +1,5 @@
-mw = require("../middlewares")
-
 module.exports.routes = [
   path: "%help"
-  middlewares: [mw.floodProtection]
   handler: (res) ->
     modules = []
     Object.keys(res.client.routes).forEach (module) ->
